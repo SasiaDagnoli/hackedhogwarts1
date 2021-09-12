@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hogwarts</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Hogwarts class of 1991</h1>
+    <nav>
+      <select name="houses" id="houses">
+        <option value="houses">Houses</option>
+        <option value="gryffindor">Gryffindor</option>
+        <option value="ravenclaw">Ravenclaw</option>
+        <option value="slytherin">Slytherin</option>
+        <option value="hufflepuff">Hufflepuff</option>
+      </select>
+      <button data-action="filter" data-house="all">All</button>
+      <button data-action="filter" data-house="Gryffindor">Gryffindor</button>
+      <button data-action="filter" data-house="Slytherin">Slytherin</button>
+      <button data-action="filter" data-house="Hufflepuff">Hufflepuff</button>
+      <button data-action="filter" data-house="Ravenclaw">Ravenclaw</button>
+    </nav>
+    <template>
+      <div class="student">
+        <h2 class="studentname"></h2>
+        <p class="house"></p>
+        <img class="prefectstar" src="prefectstar.svg" alt="Prefect star" />
+      </div>
+    </template>
+    <main></main>
+    <script src="script.js"></script>
+  </body>
+</html>

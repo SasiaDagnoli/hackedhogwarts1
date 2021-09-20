@@ -12,9 +12,11 @@ const Student = {
   image: "",
   prefect: false,
   expelled: false,
+  bloodStatus: "",
 };
 
 let expelledArray = [];
+let bloodData;
 
 const settings = {
   houseType: "all",
@@ -22,11 +24,34 @@ const settings = {
   prefect: false,
 };
 
-function getJsonData() {
+async function getJsonData() {
+  const response = await fetch(
+    "https://petlatkea.dk/2021/hogwarts/students.json"
+  );
+  const data = await response.json();
+
+  const bloodStatus = await fetch(
+    "https://petlatkea.dk/2021/hogwarts/families.json"
+  );
+  bloodData = await bloodStatus.json();
+
+  convertJSONData(data);
+}
+
+/* function getJsonData() {
   fetch("https://petlatkea.dk/2021/hogwarts/students.json")
     .then((response) => response.json())
     .then((data) => convertJSONData(data));
-}
+} */
+
+/* async function loadBloodStatus() {
+  const response = await fetch(
+    "https://petlatkea.dk/2021/hogwarts/families.json"
+  );
+  bloodData = await response.json();
+  console.log(bloodData);
+  //convertJSONData();
+} */
 
 function convertJSONData(jsonDATA) {
   jsonDATA.forEach((elm) => {
@@ -39,12 +64,15 @@ function convertJSONData(jsonDATA) {
     student.lastName = getLastName(trimName);
     student.house = getHouse(trimHouse);
     student.image = getImage(student.firstName, student.lastName);
+    student.bloodStatus = getBloodStatus(student.lastName);
+    // console.log(bloodData);
     arrayOfStudentObjects.push(student);
   });
 
   //displayList(arrayOfStudentObjects);
   buildList();
 }
+
 eventToButtons();
 
 function eventToButtons() {
@@ -54,6 +82,19 @@ function eventToButtons() {
   document
     .querySelectorAll("[data-action='sort']")
     .forEach((button) => button.addEventListener("click", selectSort));
+}
+
+function getBloodStatus(lastname) {
+  //console.log(bloodData);
+  let bloodStatus;
+  if (bloodData.half.includes(`${lastname}`)) {
+    bloodStatus = "half";
+  } else if (bloodData.pure.includes(`${lastname}`)) {
+    bloodStatus = "pure";
+  } else {
+    bloodStatus = "mudblood";
+  }
+  return bloodStatus;
 }
 
 //Gets the firstname
@@ -138,6 +179,8 @@ function getImage(firstname, lastname) {
     return imgName;
   }
 }
+
+//function getBloodStatus(lastname) {}
 
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
@@ -263,6 +306,7 @@ function displayStudents(student) {
       "h2"
     ).textContent = `${student.firstName} ${student.middleName} ${student.lastName}`;
   }
+  //document.querySelector(".bloodstatus").textContent = student.bloodStatus;
 
   //Make a student a prefect
   if (student.prefect === true) {

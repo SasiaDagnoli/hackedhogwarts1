@@ -10,11 +10,13 @@ const Student = {
   lastName: "",
   house: "",
   prefect: false,
+  expelled: false,
 };
 
 const settings = {
   houseType: "all",
   sortBy: "firstName",
+  prefect: false,
 };
 
 function getJsonData() {
@@ -241,8 +243,6 @@ function displayStudents(student) {
   //Make a student a prefect
   if (student.prefect === true) {
     clone.querySelector(".prefectstar").src = "prefectstarcolor.svg";
-  } else {
-    //clone.querySelector(".prefectstar").src = "prefectstar.svg";
   }
   clone.querySelector(".prefectstar").addEventListener("click", makePrefect);
   function makePrefect() {
@@ -252,6 +252,16 @@ function displayStudents(student) {
       tryToMakePrefect(student);
     }
     buildList();
+  }
+
+  //Expel a student
+  clone.querySelector(".doorexpel").addEventListener("click", clickExpel);
+  function clickExpel() {
+    if (student.expelled === true) {
+      student.expelled = false;
+    } else {
+      expelAStudent(student);
+    }
   }
 
   const clickBtn = clone.querySelector(".modal-data");
@@ -300,7 +310,6 @@ function decorateModal(student) {
 
 function tryToMakePrefect(selectedStudent) {
   const prefects = arrayOfStudentObjects.filter((student) => student.prefect);
-  // const numberOfPrefects = prefects.length;
   const otherPrefects = prefects.filter(
     (student) => student.house === selectedStudent.house
   );
@@ -352,4 +361,11 @@ function tryToMakePrefect(selectedStudent) {
   function makeAPrefect(student) {
     student.prefect = true;
   }
+}
+
+function expelAStudent(expelledStudent) {
+  console.log(expelledStudent);
+  expelledStudent.expelled = true;
+
+  //console.log(arrayOfStudentObjects);
 }

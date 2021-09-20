@@ -33,26 +33,35 @@
           </button>
         </li>
         <li>
-          <button data-action="sort" data-sortname="prefect">Prefect</button>
+          <button data-action="filter" data-sortprefect="prefect">
+            Prefect
+          </button>
+        </li>
+        <li>
+          <button data-action="filter" data-filter="expelled">Expelled</button>
         </li>
       </ul>
       <ul>
         <p>Houses:</p>
         <li>
-          <button data-action="filter" data-house="Gryffindor">
+          <button data-action="filter" data-filter="Gryffindor">
             Gryffindor
           </button>
         </li>
         <li>
-          <button data-action="filter" data-house="Slytherin">Slytherin</button>
+          <button data-action="filter" data-filter="Slytherin">
+            Slytherin
+          </button>
         </li>
         <li>
-          <button data-action="filter" data-house="Hufflepuff">
+          <button data-action="filter" data-filter="Hufflepuff">
             Hufflepuff
           </button>
         </li>
         <li>
-          <button data-action="filter" data-house="Ravenclaw">Ravenclaw</button>
+          <button data-action="filter" data-filter="Ravenclaw">
+            Ravenclaw
+          </button>
         </li>
       </ul>
       <div class="infostudents">
@@ -76,6 +85,7 @@
         <h2 class="modal-data" class="studentname"></h2>
         <p class="house"></p>
         <img class="prefectstar" src="prefectstar.svg" alt="Prefect star" />
+        <img class="doorexpel" src="door.svg" alt="Expel door" />
         <!-- <button class="modal-data">Read more</button> -->
       </div>
     </template>
@@ -88,6 +98,7 @@
         <p class="nickname"></p>
         <p class="lastname"></p>
         <p class="gender"></p>
+        <img class="image" src="" alt="" />
         <img src="" alt="" />
       </div>
     </section>

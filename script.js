@@ -9,6 +9,7 @@ const Student = {
   nickName: "",
   lastName: "",
   house: "",
+  image: "",
   prefect: false,
   expelled: false,
 };
@@ -37,6 +38,7 @@ function convertJSONData(jsonDATA) {
     student.nickName = getNickName(trimName);
     student.lastName = getLastName(trimName);
     student.house = getHouse(trimHouse);
+    student.image = getImage(student.firstName, student.lastName);
     arrayOfStudentObjects.push(student);
   });
 
@@ -117,6 +119,24 @@ function getHouse(house) {
 
   //console.log(firstLetterCapital);
   return firstLetterCapital;
+}
+
+function getImage(firstname, lastname) {
+  let imgName;
+  if (lastname === "Patil") {
+    if (firstname === "Padma") {
+      imgName = "patil_padma.png";
+    } else {
+      imgName = "patil_pavarti.png";
+    }
+    return imgName;
+  } else {
+    const lowerCaseFirstName = firstname.toLowerCase().substring(1, 0);
+    const lowerCaseLastName = lastname.toLowerCase();
+    imgName = `${lowerCaseLastName}_${lowerCaseFirstName}.png`;
+    //console.log(imgName);
+    return imgName;
+  }
 }
 
 function selectFilter(event) {
@@ -270,7 +290,7 @@ function displayStudents(student) {
     console.log(arrayOfStudentObjects);
     buildList();
   }
-
+  //Show modal about students
   const clickBtn = clone.querySelector(".modal-data");
   clickBtn.addEventListener("click", clickStudent);
   function clickStudent() {
@@ -284,6 +304,7 @@ function displayStudents(student) {
     document.querySelector(
       ".lastname"
     ).textContent = `Firstname: ${student.lastName}`;
+    document.querySelector(".image").src = `images/${student.image}`;
 
     decorateModal(student);
   }

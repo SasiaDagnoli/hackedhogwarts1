@@ -120,7 +120,7 @@ function getHouse(house) {
 }
 
 function selectFilter(event) {
-  const filter = event.target.dataset.house;
+  const filter = event.target.dataset.filter;
   setFilter(filter);
 }
 
@@ -162,6 +162,8 @@ function filterHouse(filteredList) {
     filteredList = arrayOfStudentObjects.filter(isSlytherin);
   } else if (settings.houseType === "Ravenclaw") {
     filteredList = arrayOfStudentObjects.filter(isRavenclaw);
+  } else if (settings.houseType === "expelled") {
+    filteredList = expelledArray;
   }
 
   return filteredList;
@@ -267,7 +269,6 @@ function displayStudents(student) {
     console.log(expelledArray);
     console.log(arrayOfStudentObjects);
     buildList();
-    displayExpelledStudents(student);
   }
 
   const clickBtn = clone.querySelector(".modal-data");
@@ -368,5 +369,3 @@ function tryToMakePrefect(selectedStudent) {
     student.prefect = true;
   }
 }
-
-function displayExpelledStudents(expelledStudent) {}

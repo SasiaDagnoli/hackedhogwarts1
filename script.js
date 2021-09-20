@@ -13,6 +13,8 @@ const Student = {
   expelled: false,
 };
 
+let expelledArray = [];
+
 const settings = {
   houseType: "all",
   sortBy: "firstName",
@@ -257,11 +259,15 @@ function displayStudents(student) {
   //Expel a student
   clone.querySelector(".doorexpel").addEventListener("click", clickExpel);
   function clickExpel() {
-    if (student.expelled === true) {
-      student.expelled = false;
-    } else {
-      expelAStudent(student);
-    }
+    student.expelled = true;
+    console.log(student);
+    const expelledStudent = arrayOfStudentObjects.indexOf(student);
+    arrayOfStudentObjects.splice(expelledStudent, 1);
+    expelledArray.unshift(student);
+    console.log(expelledArray);
+    console.log(arrayOfStudentObjects);
+    buildList();
+    displayExpelledStudents(student);
   }
 
   const clickBtn = clone.querySelector(".modal-data");
@@ -363,9 +369,4 @@ function tryToMakePrefect(selectedStudent) {
   }
 }
 
-function expelAStudent(expelledStudent) {
-  console.log(expelledStudent);
-  expelledStudent.expelled = true;
-
-  //console.log(arrayOfStudentObjects);
-}
+function displayExpelledStudents(expelledStudent) {}

@@ -360,6 +360,13 @@ function displayStudents(student) {
     .addEventListener("click", makeInquisitorial);
   function makeInquisitorial() {
     student.inquisitorial = !student.inquisitorial;
+    if (student.bloodStatus === "Halfblood") {
+      student.inquisitorial = false;
+      studentInquisitorialNotPossible(student);
+    } else if (student.bloodStatus === "Mudblood") {
+      student.inquisitorial = false;
+      studentInquisitorialNotPossible(student);
+    }
     buildList();
   }
 
@@ -494,6 +501,25 @@ function tryToMakePrefect(selectedStudent) {
 
   function makeAPrefect(student) {
     student.prefect = true;
+  }
+}
+
+function studentInquisitorialNotPossible(selectedStudent) {
+  if (selectedStudent.bloodStatus === "Halfblood") {
+    document.querySelector("#inquisitorial").classList.remove("hide");
+    document.querySelector(".bloodnotpossible").textContent =
+      "HALFBLOOD CANNOT BE PART OF INQUISITORIAL!";
+  } else if (selectedStudent.bloodStatus === "Mudblood") {
+    document.querySelector("#inquisitorial").classList.remove("hide");
+    document.querySelector(".bloodnotpossible").textContent =
+      "FILTHY MUDBLOOD, YOU CANNOT BE PART OF INQUISITORIAL!";
+  }
+
+  document
+    .querySelector(".closeinquisitorial")
+    .addEventListener("click", closeModal);
+  function closeModal() {
+    document.querySelector("#inquisitorial").classList.add("hide");
   }
 }
 

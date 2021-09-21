@@ -292,9 +292,28 @@ function sortList(sortedList) {
 
 function buildList() {
   const currentList = filterHouse(arrayOfStudentObjects);
+  //Student info
+  document.querySelector(
+    ".numberofstudents"
+  ).textContent = `Number of students: ${arrayOfStudentObjects.length}`;
+  document.querySelector(
+    ".numberexpelled"
+  ).textContent = `Expelled: ${expelledArray.length}`;
   document.querySelector(
     ".numbercurrent"
   ).textContent = `Students displayed: ${currentList.length}`;
+  document.querySelector(".numbergryffindor").textContent = `Gryffindor: ${
+    arrayOfStudentObjects.filter((elm) => elm.house === "Gryffindor").length
+  }`;
+  document.querySelector(".numberslytherin").textContent = `Slytherin: ${
+    arrayOfStudentObjects.filter((elm) => elm.house === "Slytherin").length
+  }`;
+  document.querySelector(".numberhufflepuff").textContent = `Hufflepuff: ${
+    arrayOfStudentObjects.filter((elm) => elm.house === "Hufflepuff").length
+  }`;
+  document.querySelector(".numberravenclaw").textContent = `Ravenclaw: ${
+    arrayOfStudentObjects.filter((elm) => elm.house === "Ravenclaw").length
+  }`;
   const sortedList = sortList(currentList);
 
   displayList(sortedList);
@@ -407,14 +426,6 @@ function displayStudents(student) {
   }
 
   clone.querySelector(".house").textContent = student.house;
-
-  //Student info
-  document.querySelector(
-    ".numberofstudents"
-  ).textContent = `Number of students: ${arrayOfStudentObjects.length}`;
-  document.querySelector(
-    ".numberexpelled"
-  ).textContent = `Expelled: ${expelledArray.length}`;
 
   tbody.appendChild(clone);
 }

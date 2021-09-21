@@ -18,94 +18,87 @@
   <body>
     <div class="twinkling"></div>
     <h1>Hogwarts class of 1991</h1>
-    <nav>
-      <ul>
-        <p>Students:</p>
-        <li><button data-action="filter" data-house="all">All</button></li>
-        <li>
-          <button data-action="sort" data-sortname="firstName">
-            Sort by firstname
-          </button>
-        </li>
-        <li>
-          <button data-action="sort" data-sortname="lastName">
-            Sort by lastname
-          </button>
-        </li>
-        <li>
-          <button data-action="filter" data-sortprefect="prefect">
-            Prefect
-          </button>
-        </li>
-        <li>
-          <button data-action="filter" data-filter="expelled">Expelled</button>
-        </li>
-      </ul>
-      <ul>
-        <p>Houses:</p>
-        <li>
-          <button data-action="filter" data-filter="Gryffindor">
-            Gryffindor
-          </button>
-        </li>
-        <li>
-          <button data-action="filter" data-filter="Slytherin">
-            Slytherin
-          </button>
-        </li>
-        <li>
-          <button data-action="filter" data-filter="Hufflepuff">
-            Hufflepuff
-          </button>
-        </li>
-        <li>
-          <button data-action="filter" data-filter="Ravenclaw">
-            Ravenclaw
-          </button>
-        </li>
-      </ul>
+    <div class="top">
       <div class="infostudents">
-        <h2>Number of students:</h2>
-        <p>Gryffindor:</p>
-        <p>Slytherin:</p>
-        <p>Hufflepuff</p>
-        <p>Ravenclaw</p>
-        <h2>Expelled students</h2>
-        <h2>Students displayed</h2>
+        <h2 class="numberofstudents"></h2>
+        <p class="numbergryffindor"></p>
+        <p class="numberslytherin"></p>
+        <p class="numberhufflepuff"></p>
+        <p class="numberravenclaw"></p>
+        <h2 class="numberexpelled">Expelled:</h2>
+        <h2 class="numbercurrent"></h2>
       </div>
-    </nav>
-    <!--  <div class="column">
-      <p>Name</p>
-      <p>House</p>
-      <p>Prefect</p>
-      <p>Expel</p>
-    </div> -->
+
+      <ul class="houses">
+        <button data-action="filter" data-house="all">All</button>
+        <button data-action="filter" data-filter="Gryffindor">
+          Gryffindor
+        </button>
+
+        <button data-action="filter" data-filter="Slytherin">Slytherin</button>
+
+        <button data-action="filter" data-filter="Hufflepuff">
+          Hufflepuff
+        </button>
+
+        <button data-action="filter" data-filter="Ravenclaw">Ravenclaw</button>
+        <input id="search" type="search" placeholder="Search...." />
+      </ul>
+    </div>
+
+    <table id="list">
+      <thead>
+        <th data-action="sort" data-sortname="firstName">Sort by firstname</th>
+
+        <th data-action="sort" data-sortname="lastName">Sort by lastname</th>
+        <th data-action="sort">House</th>
+        <th data-action="filter" data-filter="prefect">Prefect</th>
+        <th data-action="filter" data-filter="inquisitorial">
+          Inquisitorial squad
+        </th>
+        <th data-action="filter" data-filter="expelled">Expell</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+
     <template>
-      <div class="student">
-        <h2 class="modal-data" class="studentname"></h2>
-        <p class="house"></p>
-        <img class="prefectstar" src="prefectstar.svg" alt="Prefect star" />
-        <img class="doorexpel" src="door.svg" alt="Expel door" />
-        <!-- <button class="modal-data">Read more</button> -->
-      </div>
+      <tr>
+        <div class="student">
+          <td><h2 class="modal-data" class="studentname"></h2></td>
+          <td><h2 class="lastname"></h2></td>
+          <td><p class="house"></p></td>
+          <td>
+            <img class="prefectstar" src="prefectstar.svg" alt="Prefect star" />
+          </td>
+          <td><img class="inquisitorialimg" src="" alt="" /></td>
+          <td><img class="doorexpel" src="door.svg" alt="Expel door" /></td>
+        </div>
+      </tr>
     </template>
-    <main></main>
+
     <section class="modal hide">
       <div class="modal-content">
         <div class="close">X</div>
-        <p class="firstname"></p>
-        <p class="middlename"></p>
-        <p class="nickname"></p>
-        <p class="lastname"></p>
-        <p class="gender"></p>
-        <img class="image" src="" alt="" />
-        <img src="" alt="" />
+        <div class="modalflex">
+          <img class="image" src="" alt="" />
+          <ul>
+            <p class="firstname"></p>
+            <p class="middlename"></p>
+            <p class="nickname"></p>
+            <p class="lastnamemodal"></p>
+            <p class="bloodstatus"></p>
+            <img class="prefectstarmodal" src="" alt="" />
+            <p class="gender"></p>
+            <p class="expelledtrue"></p>
+          </ul>
+          <img class="housecrest" src="" alt="" />
+        </div>
       </div>
     </section>
     <div id="prefectremove" class="modal hide">
       <div class="modal-content">
         <div class="closeprefect">X</div>
-        <h1>Warning</h1>
+        <h1 class="warning">Warning</h1>
         <p>There can only be 2 prefects from each house!</p>
         <div class="remove">
           <button class="removea">Remove</button>
@@ -113,7 +106,24 @@
         </div>
       </div>
     </div>
-    <footer></footer>
+    <footer>
+      <p>Attributes</p>
+      <a href="https://www.freepik.com/vectors/background"
+        >Background vector created by freepik - www.freepik.com</a
+      >
+
+      <a href="https://www.freepik.com/vectors/logo"
+        >Logo vector created by freepik - www.freepik.com</a
+      >
+
+      <a href="https://www.freepik.com/vectors/character"
+        >Character vector created by lesyaskripak - www.freepik.com</a
+      >
+
+      <a href="https://www.freepik.com/vectors/background"
+        >Background vector created by freepik - www.freepik.com</a
+      >
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

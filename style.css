@@ -3,6 +3,13 @@ body {
   animation: move-stars 200s linear infinite;
 }
 
+[data-action] {
+  cursor: pointer;
+  color: white;
+  font-family: "Mountains of Christmas", cursive;
+  font-size: 1.5rem;
+}
+
 @keyframes move-stars {
   from {
     background-position: 0 0;
@@ -13,13 +20,16 @@ body {
 }
 
 button {
-  border: none;
-  background-color: white;
-  opacity: 50%;
+  border: 1px solid white;
+  background-color: transparent;
   font-family: "Mountains of Christmas", cursive;
   font-size: 1.5rem;
   margin: 5px;
-  border-radius: 10px;
+}
+
+::placeholder,
+input {
+  color: white;
 }
 
 h1 {
@@ -29,34 +39,30 @@ h1 {
   color: white;
 }
 
+.close,
+.closeinquisitorial,
+.closenotexpel {
+  font-family: "Mountains of Christmas", cursive;
+  font-size: 2rem;
+  float: right;
+  color: white;
+  cursor: pointer;
+}
+
 h2,
 p {
   font-family: "Lato", sans-serif;
   color: white;
 }
 
-main {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 2rem;
-  text-align: center;
-  margin: 50px;
-  padding: 0 100px 100px 100px;
-}
-
-nav {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  padding: 0px 100px 0px 100px;
-}
-
 .infostudents {
   background-color: white;
-  width: 180%;
+  width: 50%;
   height: 100%;
   opacity: 50%;
-  border-radius: 50px;
   padding-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .infostudents p {
@@ -66,18 +72,7 @@ nav {
   color: black;
 }
 
-.student {
-  border: 2px solid white;
-}
-
-.prefectstar {
-  width: 10%;
-  float: right;
-  padding: 5px;
-}
-
 .modal {
-  /*display: none;*/
   position: fixed;
   z-index: 1;
   left: 0;
@@ -88,27 +83,124 @@ nav {
 }
 
 .modal-content {
-  background-color: white;
+  background-color: black;
   margin: 15% auto;
   padding: 20px;
-  /* border: 1px solid black;  */
   width: 50%;
-  border-radius: 50px;
 }
 
-.close {
-  float: right;
+.modalflex {
+  display: flex;
+}
+
+.prefectstarmodal,
+.inquisatorialmodal {
+  width: 10%;
+}
+
+.inquisitorialimg {
+  width: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.expelledtrue {
+  width: 30%;
+}
+
+.expelledtrue {
+  font-family: "Mountains of Christmas", cursive;
+}
+
+.prefectstar,
+.doorexpel,
+.inquisitorialimg {
+  cursor: pointer;
+}
+.image {
+  width: 50%;
+}
+
+.housecrest {
+  width: 20%;
+}
+
+.modal-data {
+  cursor: pointer;
 }
 
 .closeprefect {
   float: right;
+  color: white;
+  font-family: "Mountains of Christmas", cursive;
+  cursor: pointer;
+  font-size: 1.5rem;
 }
 
-.modal-content p,
-.remove {
-  text-align: center;
+#search {
+  background-color: transparent;
+  border: 1px solid white;
+  font-family: "Mountains of Christmas", cursive;
+  font-size: 1.5rem;
 }
 
 .hide {
   visibility: hidden;
+}
+
+#list {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  padding: 10px;
+}
+
+tr,
+td {
+  border-bottom: 1px solid white;
+}
+
+table {
+  width: 80%;
+}
+
+.house,
+.bloodnotpossible,
+.only2prefects,
+.cannotexpel {
+  text-align: center;
+}
+
+.hackthesystembutton {
+  border: none;
+  color: white;
+}
+
+[data-sortname="firstName"] {
+  float: left;
+}
+
+[data-sortname="lastName"] {
+  text-align: left;
+}
+
+.houses {
+  text-align: center;
+  padding: 20px;
+}
+
+.removea,
+.removeb,
+.remove {
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 50px;
 }

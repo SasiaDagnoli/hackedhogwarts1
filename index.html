@@ -56,7 +56,7 @@
         <th data-action="filter" data-filter="inquisitorial">
           Inquisitorial squad
         </th>
-        <th data-action="filter" data-filter="expelled">Expell</th>
+        <th data-action="filter" data-filter="expelled">Expel</th>
       </thead>
       <tbody></tbody>
     </table>
@@ -87,8 +87,10 @@
             <p class="nickname"></p>
             <p class="lastnamemodal"></p>
             <p class="bloodstatus"></p>
-            <img class="prefectstarmodal" src="" alt="" />
-            <p class="gender"></p>
+            <div class="modalimg">
+              <img class="prefectstarmodal" src="" alt="" />
+              <img class="inquisatorialmodal" src="" alt="" />
+            </div>
             <p class="expelledtrue"></p>
           </ul>
           <img class="housecrest" src="" alt="" />
@@ -99,7 +101,9 @@
       <div class="modal-content">
         <div class="closeprefect">X</div>
         <h1 class="warning">Warning</h1>
-        <p>There can only be 2 prefects from each house!</p>
+        <p class="only2prefects">
+          There can only be 2 prefects from each house!
+        </p>
         <div class="remove">
           <button class="removea">Remove</button>
           <button class="removeb">Remove</button>
@@ -113,20 +117,28 @@
         <p class="bloodnotpossible"></p>
       </div>
     </div>
+    <div id="notexpel" class="modal hide">
+      <div class="modal-content">
+        <div class="closenotexpel">X</div>
+        <h1>Warning</h1>
+        <p class="cannotexpel">You cannot expel this student!</p>
+      </div>
+    </div>
     <footer>
-      <p>Attributes</p>
+      <button class="hackthesystembutton">Attributes</button>
+      <br />
       <a href="https://www.freepik.com/vectors/background"
         >Background vector created by freepik - www.freepik.com</a
       >
-
+      <br />
       <a href="https://www.freepik.com/vectors/logo"
         >Logo vector created by freepik - www.freepik.com</a
       >
-
+      <br />
       <a href="https://www.freepik.com/vectors/character"
         >Character vector created by lesyaskripak - www.freepik.com</a
       >
-
+      <br />
       <a href="https://www.freepik.com/vectors/background"
         >Background vector created by freepik - www.freepik.com</a
       >
